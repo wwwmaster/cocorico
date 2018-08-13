@@ -1,6 +1,7 @@
 # Cocorico Documentation
 
 
+
 ## Table of Contents
 
 - [Server installation](installation-server.md)
