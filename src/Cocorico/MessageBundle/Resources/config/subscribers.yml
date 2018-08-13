@@ -6,3 +6,4 @@ services:
             - "@cocorico_message.thread_manager"
         tags:
             - { name: kernel.event_subscriber}
+            

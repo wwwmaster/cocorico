@@ -16,6 +16,7 @@ use Cocorico\CoreBundle\Event\BookingEvent;
 use Cocorico\CoreBundle\Event\BookingEvents;
 use Cocorico\MessageBundle\Model\ThreadManager;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
+use Cocorico\CoreBundle\Mailer\TwigSwiftMailer;
 
 
 class BookingSubscriber implements EventSubscriberInterface
@@ -36,6 +37,12 @@ class BookingSubscriber implements EventSubscriberInterface
         $booking = $event->getBooking();
         $user = $booking->getUser();
         $this->threadManager->createNewListingThread($user, $booking);
+        
+        TwigSwiftMailer::sendMessageToAdmin(
+                    'New booking created',
+                    'New booking created'
+                );
+        
     }
 
 

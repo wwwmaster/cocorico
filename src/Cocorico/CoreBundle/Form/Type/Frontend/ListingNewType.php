@@ -32,6 +32,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorage;
 use Symfony\Component\Security\Core\Authorization\AuthorizationChecker;
 use Symfony\Component\Validator\Constraints\IsTrue;
+use Cocorico\CoreBundle\Form\EventListener\AddISBNFieldSubscriber;
 
 /**
  * Class ListingNewType
