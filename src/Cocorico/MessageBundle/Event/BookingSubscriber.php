@@ -22,13 +22,15 @@ use Cocorico\CoreBundle\Mailer\TwigSwiftMailer;
 class BookingSubscriber implements EventSubscriberInterface
 {
     protected $threadManager;
+    protected $mailer;
 
     /**
      * @param ThreadManager $threadManager
      */
-    public function __construct(ThreadManager $threadManager)
+    public function __construct(ThreadManager $threadManager, TwigSwiftMailer $mailer)
     {
         $this->threadManager = $threadManager;
+        $this->mailer = $mailer;
     }
 
 
@@ -38,11 +40,10 @@ class BookingSubscriber implements EventSubscriberInterface
         $user = $booking->getUser();
         $this->threadManager->createNewListingThread($user, $booking);
         
-        TwigSwiftMailer::sendMessageToAdmin(
+        $this->mailer->sendMessageToAdmin(
                     'New booking created',
                     'New booking created'
-                );
-        
+                );        
     }
 
 
