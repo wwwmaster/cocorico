@@ -115,6 +115,11 @@ class Listing extends BaseListing
      * @ORM\OneToMany(targetEntity="Cocorico\CoreBundle\Model\ListingOptionInterface", mappedBy="listing", cascade={"persist", "remove"}, orphanRemoval=true)
      */
     private $options;
+    
+    /**
+     * @ORM\Column(name="isbn", type="string", length=100, nullable=true)
+     */
+    private $isbn;
 
 
     public function __construct()
@@ -642,5 +647,21 @@ class Listing extends BaseListing
                 }
             }
         }
+    }
+    
+    /*
+     * @param string $isbn
+     * @return $this 
+     */
+    public function setIsbn(string $isbn){
+        $this->isbn = $isbn;
+        return $this;
+    }
+    
+    /*
+     * @return string
+     */
+    public function getIsbn(){
+        return (string)$this->isbn;
     }
 }
